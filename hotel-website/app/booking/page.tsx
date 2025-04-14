@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { format } from "date-fns"
 import { CalendarIcon, Check, CreditCard, Info } from "lucide-react"
-
+import { useForm, FormProvider } from "react-hook-form";
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -23,8 +23,9 @@ export default function BookingPage() {
   const [children, setChildren] = useState("0")
   const [rooms, setRooms] = useState("1")
   const [roomType, setRoomType] = useState("")
-
+  const methods = useForm();
   return (
+    <FormProvider {...methods}>
     <div className="flex flex-col min-h-screen pt-20">
       <div className="container mx-auto max-w-6xl py-12 px-4">
         <div className="mb-8">
@@ -388,5 +389,6 @@ export default function BookingPage() {
         </div>
       </div>
     </div>
+    </FormProvider>
   )
 }
